@@ -27,10 +27,15 @@ Route::post('add-to-cart', 'Frontend\CartController@addProduct');
 
 Route::post('delete-cart-item', 'Frontend\CartController@deleteproduct');
 Route::post('update-cart', 'Frontend\CartController@updatecart');
+
 Route::middleware('auth')->group( function () {
 
     Route::get('cart', 'Frontend\CartController@viewcart');
     Route::get('checkout', 'Frontend\CheckoutController@index');
+    Route::post('place-order', 'Frontend\CheckoutController@placeorder');
+    Route::get('my-orders', 'Frontend\UserController@index');
+
+    Route::get('view-order/{id}', 'Frontend\UserController@view');
 });
 
     Route::get('/dashboard', function () {

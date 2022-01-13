@@ -5,6 +5,8 @@
 
 @section('content')
 <div class="container my-lg-5">
+    <form action="{{url('place-order')}}" method="POST">
+        @csrf
     <div class="row">
         <div class="col-md-7">
             <div class="card">
@@ -14,52 +16,52 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter First Name">
+                                <input type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::User()->name}}"  name="fname" placeholder="enter First Name">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter Last Name">
+                                <input type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::User()->lname}}" name="lname" placeholder="enter Last Name">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter Email">
+                                <input type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::User()->email}}" name="email" placeholder="enter Email">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter Phone Number">
+                                <input type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::User()->phone}}" name="phone" placeholder="enter Phone Number">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter Address1">
+                                <input type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::User()->phone}}" name="address1" placeholder="enter Address1">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter Address2">
+                                <input type="text" class="form-control" name="address2" value="{{\Illuminate\Support\Facades\Auth::User()->address2}}" placeholder="enter Address2">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter City">
+                                <input type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::User()->city}}" name="city" placeholder="enter City">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter State">
+                                <input type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::User()->state}}" name="state" placeholder="enter State">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter Country">
+                                <input type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::User()->country}}" name="country" placeholder="enter Country">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" class="form-control" placeholder="enter Pin Code">
+                                <input type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::User()->pincode}}" name="pincode" placeholder="enter Pin Code">
                             </div>
                         </div>
                     </div>
@@ -97,12 +99,13 @@
                         </tbody>
                     </table>
                     <hr>
-                    <button class="btn btn-primary">Place Order</button>
+                    <button type="submit" class="btn btn-primary">Place Order</button>
 
                 </div>
             </div>
         </div>
     </div>
+    </form>
 </div>
 
 
