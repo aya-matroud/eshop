@@ -90,19 +90,19 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/rtl.html">
+                <a class="nav-link text-white @if(Request::is('orders')) active bg-gradient-primary @endif" href="{{url('orders')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+                        <i class="material-icons opacity-10">assignment</i>
                     </div>
-                    <span class="nav-link-text ms-1">RTL</span>
+                    <span class="nav-link-text ms-1">Orders</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/notifications.html">
+                <a class="nav-link text-white @if(Request::is('users')) active bg-gradient-primary @endif" href="{{url('users')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">notifications</i>
+                        <i class="material-icons opacity-10">person</i>
                     </div>
-                    <span class="nav-link-text ms-1">Notifications</span>
+                    <span class="nav-link-text ms-1">Users</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
@@ -128,7 +128,7 @@
                 <a class="nav-link text-white "  href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">assignment</i>
+                        <i class="material-icons opacity-10">logout</i>
                     </div>
 
                     <span class="nav-link-text ms-1">
