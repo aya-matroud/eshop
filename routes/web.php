@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Auth::routes();
-
+Route::get('load-cart-data', 'Frontend\CartController@cartcount');
 Route::get('/', 'Frontend\FrontEndController@index');
 Route::get('category', 'Frontend\FrontEndController@category');
 Route::get('view-category/{slug}', 'Frontend\FrontEndController@viewcategory');
@@ -27,6 +27,9 @@ Route::post('add-to-cart', 'Frontend\CartController@addProduct');
 
 Route::post('delete-cart-item', 'Frontend\CartController@deleteproduct');
 Route::post('update-cart', 'Frontend\CartController@updatecart');
+Route::post('add-to-wishlist', 'Frontend\WishlistController@add');
+
+Route::post('delete-wishlist-item', 'Frontend\WishlistController@deleteitem');
 
 Route::middleware('auth')->group( function () {
 
@@ -36,6 +39,9 @@ Route::middleware('auth')->group( function () {
     Route::get('my-orders', 'Frontend\UserController@index');
 
     Route::get('view-order/{id}', 'Frontend\UserController@view');
+
+    Route::get('wishlist', 'Frontend\WishlistController@index');
+
 });
 
     Route::get('/dashboard', function () {
