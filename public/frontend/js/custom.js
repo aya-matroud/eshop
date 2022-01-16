@@ -2,13 +2,33 @@
 
 $(document).ready(function () {
 loadcart();
+loadwishlist();
     function loadcart(){
         $.ajax({
             method:"Get",
             url:"/load-cart-data",
 
             success:function (response) {
-             console.log(response.count);
+
+                $(' .cart-count').html();
+                $('.cart-count').html(response.count);
+
+            }
+
+        });
+
+    }
+
+    function loadwishlist(){
+        $.ajax({
+            method:"Get",
+            url:"/load-wishcount-data",
+
+            success:function (response) {
+
+                $(' .wishlist-count').html();
+                $('.wishlist-count').html(response.count);
+
             }
 
         });
@@ -34,6 +54,7 @@ loadcart();
                 },
             success:function (response) {
                 swal(response.status);
+                loadcart();
             }
 
         });
@@ -132,6 +153,7 @@ loadcart();
                 },
             success:function (response) {
                 swal(response.status);
+                loadwishlist();
             }
 
         });

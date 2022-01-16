@@ -44,11 +44,19 @@
                 </li>
                <li class="nav-item">
                     <a class="nav-link" href="{{url('cart')}}">Cart</a>
-                   <span class="badge badge-pill bg-gradient-primary cart-count">0</span>
+
                 </li>
                 <li class="nav-item">
+                    <span class="badge badge-pill bg-gradient-primary cart-count" style="padding: 6px;margin: 9px">0</span>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="{{url('wishlist')}}">Wishlist</a>
-                    <span class="badge badge-pill bg-success wishlist-count">0</span>
+
+                </li>
+                <li class="nav-item">
+
+                    <span class="badge badge-pill bg-success wishlist-count" style="padding: 6px;margin: 9px">0</span>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

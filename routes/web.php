@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('load-cart-data', 'Frontend\CartController@cartcount');
+
+Route::get('load-wishcount-data', 'Frontend\WishlistController@wishlistcount');
 Route::get('/', 'Frontend\FrontEndController@index');
 Route::get('category', 'Frontend\FrontEndController@category');
 Route::get('view-category/{slug}', 'Frontend\FrontEndController@viewcategory');
