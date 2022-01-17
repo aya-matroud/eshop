@@ -121,6 +121,7 @@
                     <input type="hidden" name="payment_mode" value="COD">
                     <button type="submit" class="btn btn-success w-100">Place Order | COD</button>
                     <button type="button" class="btn btn-primary w-100 razorpay_btn">Pay with Razorpay</button>
+                    <div id="paypal-button-container"></div>
                     @else
                         <h6 class="text-center">No Products in cart</h6>
                     @endif

@@ -44,6 +44,8 @@ Route::middleware('auth')->group( function () {
 
     Route::get('wishlist', 'Frontend\WishlistController@index');
     Route::post('proceed-to-pay', 'Frontend\CheckoutController@razorpaycheck');
+
+     Route::post('add-rating', 'Frontend\RatingController@add');
 });
 
     Route::get('/dashboard', function () {
