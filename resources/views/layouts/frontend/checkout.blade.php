@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-lg input-group-outline my-3">
-                                <input type="text" required class="form-control address1" value="{{\Illuminate\Support\Facades\Auth::User()->phone}}" name="address1" placeholder="enter Address1">
+                                <input type="text" required class="form-control address1" value="{{\Illuminate\Support\Facades\Auth::User()->address1}}" name="address1" placeholder="enter Address1">
                                 <span id="address1_error" class="text-danger"></span>
                             </div>
                         </div>
@@ -80,6 +80,7 @@
         </div>
         <div class="col-md-5">
             <div class="card">
+                @if($cartItems->count() >0)
                 <div class="card-body">
                     <h6>Order Details</h6>
                     <hr>
@@ -98,8 +99,15 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @php
+                            $total=0;
+                        @endphp
                         @foreach($cartItems as $item)
                             <tr>
+                                @php
+                                    $total +=$item->products->selling_price*$item->prod_qty;
+                                @endphp
+
                                 <td>{{$item->products->name}}</td>
                                 <td>{{$item->prod_qty}}</td>
                                 <td>{{$item->products->selling_price}}</td>
@@ -108,9 +116,14 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <h6 class="px-2">Grand Total<span class="float-end">Rs {{ $total }}</span> </h6>
                     <hr>
+                    <input type="hidden" name="payment_mode" value="COD">
                     <button type="submit" class="btn btn-success w-100">Place Order | COD</button>
                     <button type="button" class="btn btn-primary w-100 razorpay_btn">Pay with Razorpay</button>
+                    @else
+                        <h6 class="text-center">No Products in cart</h6>
+                    @endif
                 </div>
             </div>
         </div>
@@ -121,3 +134,6 @@
 
 
 @endsection
+@section('scripts')
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    @endsection

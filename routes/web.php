@@ -43,7 +43,7 @@ Route::middleware('auth')->group( function () {
     Route::get('view-order/{id}', 'Frontend\UserController@view');
 
     Route::get('wishlist', 'Frontend\WishlistController@index');
-
+    Route::post('proceed-to-pay', 'Frontend\CheckoutController@razorpaycheck');
 });
 
     Route::get('/dashboard', function () {
