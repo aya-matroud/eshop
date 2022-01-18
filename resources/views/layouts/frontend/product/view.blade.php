@@ -16,6 +16,17 @@
                 <div class="modal-body">
                     <div class="rating-css">
                         <div class="star-icon">
+                            @if($user_rating)
+                                @for($i=1;$i<=$user_rating->stars_rated;$i++)
+                                    <input type="radio" value="{{$i}}" name="product_rating" checked id="rating{{$i}}">
+                                    <label for="rating{{$i}}" class="fa fa-star"></label>
+                                @endfor
+                                @for($j=$user_rating->stars_rated+1;$j<=5;$j++)
+                                        <input type="radio" value="{{$j}}" name="product_rating" id="rating{{$j}}">
+                                        <label for="rating{{$j}}" class="fa fa-star"></label>
+                                @endfor
+
+                                @else
                             <input type="radio" value="1" name="product_rating" checked id="rating1">
                             <label for="rating1" class="fa fa-star"></label>
                             <input type="radio" value="2" name="product_rating" id="rating2">
@@ -26,6 +37,7 @@
                             <label for="rating4" class="fa fa-star"></label>
                             <input type="radio" value="5" name="product_rating" id="rating5">
                             <label for="rating5" class="fa fa-star"></label>
+                                @endif
                         </div>
                     </div>
                 </div>
@@ -56,8 +68,8 @@
 
 
     <div class="container">
-        <div class="card shadow product_data">
-            <div class="card-body">
+        <div class=" product_data">
+            <div class="">
                 <div class="row">
                     <div class="mb-4 border-right">
                         <img src="{{asset('storeimg/uploads/product/'. $product->image)}}" alt="Product Image" class="w-30">
@@ -73,6 +85,21 @@
                         <hr>
                         <label  class="me-3">Original Price : <s>Rs{{$product->original_price}}</s></label>
                         <label  class="fw-bold">Selling Price : <s>Rs{{$product->selling_price}}</s></label>
+
+                        @php $ratenum=number_format($rating_value); @endphp
+                        <div class="rating">
+                            @for($i=1; $i<= $ratenum; $i++)
+                            <i class="fa fa-star checked"></i>
+                            @endfor
+                                @for($j=$ratenum+1;$j<=5;$j++)
+                                    <i class="fa fa-star"></i>
+                                @endfor
+                                @if($rating->count()>0)
+                            <span>{{$rating->count()}} Ratings</span>
+                                    @else
+                            No Ratings
+                                    @endif
+                        </div>
                         <p class="mt-3">
                             {!! $product->small_description !!}
                         </p>
@@ -121,12 +148,19 @@
                     <p class="mt-3">
                         {!! $product->description !!}
                     </p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Rate This Product
-                    </button>
 
 
                 </div>
+                <hr>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Rate This Product
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Write a review
+                    </button>
+                </div>
+
 
             </div>
         </div>
