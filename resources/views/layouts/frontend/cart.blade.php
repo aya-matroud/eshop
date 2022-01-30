@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="container my-lg-5">
-        <div class="card shadow">
+        <div class="card shadow cartitems">
             @if($cartItems->count() >0)
             <div class="card-body">
 

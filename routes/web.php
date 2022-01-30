@@ -46,6 +46,13 @@ Route::middleware('auth')->group( function () {
     Route::post('proceed-to-pay', 'Frontend\CheckoutController@razorpaycheck');
 
      Route::post('add-rating', 'Frontend\RatingController@add');
+
+     Route::get('add-review/{product_slug}/userreview', 'Frontend\ReviewController@add');
+
+     Route::post('add-review', 'Frontend\ReviewController@create');
+    Route::get('edit-review/{product_slug}/userreview', 'Frontend\ReviewController@edit');
+
+     Route::put('update-review', 'Frontend\ReviewController@update');
 });
 
     Route::get('/dashboard', function () {

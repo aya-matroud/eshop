@@ -141,24 +141,57 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <hr>
+                        <h3>Description</h3>
+                        <p class="mt-3">
+                            {!! $product->description !!}
+                        </p>
+
+
+                    </div>
                     <hr>
-                    <h3>Description</h3>
-                    <p class="mt-3">
-                        {!! $product->description !!}
-                    </p>
-
-
                 </div>
-                <hr>
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Rate This Product
-                    </button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Write a review
-                    </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Rate This Product
+                        </button>
+                        <a href="{{url('add-review/'.$product->slug.'/userreview')}}"  class="btn btn-primary" >
+                            Write a review
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    @foreach($reviews as $item)
+                        <div class="user-review">
+                            <label for="">{{$item->user->name.' '.$item->user->lname}}</label>
+                            @if($item->user_id == Auth::id())
+                                <a href="{{url('edit-review/'.$product->slug.'/userreview')}}">edit</a>
+                                @endif
+                            <br>
+                            @php
+                            $rating=\App\Rating::where('prod_id', $product->id)->where('user_id', Auth::id())->first();
+
+                            @endphp
+
+                            @if($rating)
+                                @php $user_rated=$item->rating->stars_rated @endphp
+                                @for($i=1; $i<= $user_rated; $i++)
+                                    <i class="fa fa-star checked"></i>
+                                @endfor
+                                @for($j=$user_rated+1;$j<=5;$j++)
+                                    <i class="fa fa-star"></i>
+                                @endfor
+                                @endif
+                            <small>Reviewed on {{$item->created_at->format('d M Y')}}</small>
+                            <p>
+                                {{$item->user_review}}
+                            </p>
+                        </div>
+                        @endforeach
+
                 </div>
 
 

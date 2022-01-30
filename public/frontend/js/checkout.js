@@ -13,7 +13,7 @@ $(document).ready(function () {
         var country=$('.country').val();
         var pincode=$('.pincode').val();
 
-        alert(address2);
+
         if(!firstname){
             fname_error="First name is required";
             $(' #fname_error').html('');
@@ -123,7 +123,7 @@ else{
             'pincode':pincode
 
         }
-        alert(address2);
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -136,7 +136,7 @@ else{
 
                 success:function (response) {
 
-                    alert(address2);
+
 
                     var options = {
                         "key": "rzp_test_dNflICKsc2S1Nh", // Enter the Key ID generated from the Dashboard
@@ -174,8 +174,12 @@ else{
                                 } ,
                                 success:function (responseb) {
                                 // alert(responseb.status);
-                                    swal(responseb.status);
-                                    window.location.href="/my-orders";
+                                    swal(responseb.status)
+                                        .then((value)=>
+                                    {
+                                        window.location.href="/my-orders";
+                                    });
+
 
                                 }
 
