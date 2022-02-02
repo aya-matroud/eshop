@@ -16,6 +16,10 @@
     <!-- Nucleo Icons -->
     <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Material Icons -->
@@ -31,6 +35,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="{{url('/')}}"  style="color: white">E-Shop</a>
+        <div class="search-bar">
+            <form action="{{url('searchproduct')}}" method="POST">
+                @csrf
+            <div class="input-group">
+                <button type="submit" class="input-group-text" ><i class="fa fa-search"></i> </button>
+                <input type="search" name="product_name" id="search_product" class="form-control" placeholder="Search"  aria-describedby="basic-addon1">
+            </div>
+            </form>
+        </div>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -158,9 +172,28 @@
 <script src="{{asset('frontend/js/custom.js')}}"></script>
 <script src="{{asset('frontend/js/checkout.js')}}"></script>
 
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
+<script>
 
+        var availableTags = [];
+        $.ajax({
+            method:"GET",
+            url:"/product-list",
+            success:function (response) {
+                startAutoComplete(response);
+            // console.log(response);
+            }
 
+        });
+
+       function startAutoComplete(availableTags) {
+           $("#search_product").autocomplete({
+               source: availableTags
+           });
+       }
+
+</script>
 
 
 

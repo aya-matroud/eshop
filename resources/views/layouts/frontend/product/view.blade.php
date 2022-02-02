@@ -58,7 +58,7 @@
                 </a>/
                 <a href="{{url('category/'.$product->category->slug)}}">
                     {{$product->category->name}}
-                </a>
+                </a>/
                 <a href="{{url('category/'.$product->category->slug.'/'.$product->slug)}}">
                     {{$product->name}}
                 </a>

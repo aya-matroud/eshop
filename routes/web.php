@@ -33,6 +33,9 @@ Route::post('add-to-wishlist', 'Frontend\WishlistController@add');
 
 Route::post('delete-wishlist-item', 'Frontend\WishlistController@deleteitem');
 
+    Route::get('product-list', 'Frontend\FrontEndController@productlistAjax');
+    Route::post('searchproduct', 'Frontend\FrontEndController@searchProduct');
+
 Route::middleware('auth')->group( function () {
 
     Route::get('cart', 'Frontend\CartController@viewcart');
