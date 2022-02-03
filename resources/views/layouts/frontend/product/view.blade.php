@@ -125,9 +125,9 @@
                                 <input type="hidden" value="{{$product->id}}" class="prod_id">
                                 <label for="Quantity">Quantity</label>
                                 <div class="input-group input-group-sm input-group-outline text-center mb-3">
-                                    <span class="badge bg-gradient-secondary decrement-btn">-</span>
+                                    <button class="badge bg-gradient-secondary decrement-btn">-</button>
                                     <input type="text" name="qty" value="1" class="form-control qty-input" style="width: 12px">
-                                    <span class="badge bg-gradient-secondary increment-btn">+</span>
+                                    <button class="badge bg-gradient-secondary increment-btn">+</button>
                                 </div>
                             </div>
 
